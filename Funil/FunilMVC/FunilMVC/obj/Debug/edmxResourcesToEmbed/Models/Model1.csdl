@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDFunilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CANDIDATO">
+    <Key>
+      <PropertyRef Name="CANID" />
+    </Key>
+    <Property Name="CANID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CANNOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANFORMACAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CANDIDATOVAGA" Relationship="Self.FK__CANDIDATO__CANID__2E1BDC42" FromRole="CANDIDATO" ToRole="CANDIDATOVAGA" />
+  </EntityType>
+  <EntityType Name="CANDIDATOVAGA">
+    <Key>
+      <PropertyRef Name="CANID" />
+      <PropertyRef Name="VAIID" />
+    </Key>
+    <Property Name="CANID" Type="Int32" Nullable="false" />
+    <Property Name="VAIID" Type="Int32" Nullable="false" />
+    <Property Name="CAVDATACADASTRO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CAVSTATUSCANDIDATURA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CANDIDATO" Relationship="Self.FK__CANDIDATO__CANID__2E1BDC42" FromRole="CANDIDATOVAGA" ToRole="CANDIDATO" />
+    <NavigationProperty Name="VAGA" Relationship="Self.FK__CANDIDATO__VAIID__2F10007B" FromRole="CANDIDATOVAGA" ToRole="VAGA" />
+  </EntityType>
+  <EntityType Name="ETAPA">
+    <Key>
+      <PropertyRef Name="ETAID" />
+    </Key>
+    <Property Name="ETAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ETADESCRICACAO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ETASEQ" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VAGA">
+    <Key>
+      <PropertyRef Name="VAIID" />
+    </Key>
+    <Property Name="VAIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VAINOME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="VAIDESCRICAO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VAIATRIBUICAO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VAISALARIO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="VAIREQUISITO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="VAIDATACADASTRO" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CANDIDATOVAGA" Relationship="Self.FK__CANDIDATO__VAIID__2F10007B" FromRole="VAGA" ToRole="CANDIDATOVAGA" />
+  </EntityType>
+  <Association Name="FK__CANDIDATO__CANID__2E1BDC42">
+    <End Role="CANDIDATO" Type="Self.CANDIDATO" Multiplicity="1" />
+    <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANDIDATO">
+        <PropertyRef Name="CANID" />
+      </Principal>
+      <Dependent Role="CANDIDATOVAGA">
+        <PropertyRef Name="CANID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CANDIDATO__VAIID__2F10007B">
+    <End Role="VAGA" Type="Self.VAGA" Multiplicity="1" />
+    <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VAGA">
+        <PropertyRef Name="VAIID" />
+      </Principal>
+      <Dependent Role="CANDIDATOVAGA">
+        <PropertyRef Name="VAIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDFunilEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CANDIDATO" EntityType="Self.CANDIDATO" />
+    <EntitySet Name="CANDIDATOVAGA" EntityType="Self.CANDIDATOVAGA" />
+    <EntitySet Name="ETAPA" EntityType="Self.ETAPA" />
+    <EntitySet Name="VAGA" EntityType="Self.VAGA" />
+    <AssociationSet Name="FK__CANDIDATO__CANID__2E1BDC42" Association="Self.FK__CANDIDATO__CANID__2E1BDC42">
+      <End Role="CANDIDATO" EntitySet="CANDIDATO" />
+      <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CANDIDATO__VAIID__2F10007B" Association="Self.FK__CANDIDATO__VAIID__2F10007B">
+      <End Role="VAGA" EntitySet="VAGA" />
+      <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

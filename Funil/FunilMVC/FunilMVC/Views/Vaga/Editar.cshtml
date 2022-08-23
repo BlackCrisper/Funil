@@ -1,0 +1,82 @@
+﻿@model FunilMVC.Models.VAGA
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+<div>
+    <form action="/Vaga/Editar?id=@Model.VAIID" method="post">
+        <div>
+            <class ="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control"
+                       maxlength="500" id="nome" name="nome"
+                       value="@Model.VAINOME"
+                       required />
+        </div>
+        <div>
+            <class ="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" class="form-control"
+                       id="descricao" name="descricao" min="0" maxlength="1000"
+                       value="@Model.VAIDESCRICAO"
+                       required />
+
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="atribuicao">Atribuição</label>
+                <input type="text" class="form-control"
+                       id="atribuicao" name="atribuicao" min="0" maxlength="1000"
+                       value="@Model.VAIATRIBUICAO"
+                       required />
+
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="salario">R$</label>
+                <input type="text" class="form-control"
+                       id="salario" name="salario" min="0"
+                       value="@Model.VAISALARIO"
+                       required />
+
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="requisito">Requisito</label>
+                <input type="text" class="form-control"
+                       id="requisito" name="requisito" min="0" maxlength="1000"
+                       value="@Model.VAIREQUISITO"
+                       required />
+
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="date">Data</label>
+                <input class="form-control"
+                       id="date" name="date" min="0" 
+                       value="@Model.VAIDATACADASTRO"
+                       required />
+
+        </div>
+
+        <div>
+
+            <br />
+
+            <div>
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="/Vaga/index" class="btn btn-primary">Voltar</a>
+
+            </div>
+
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FunilMVC.Models.VAGA>
+
+@{
+    ViewBag.Title = "Criar";
+}
+
+<h2>Criar</h2>
+
+<div>
+    <form action="/Vaga/Criar" method="post">
+        <div>
+            <class ="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control"
+                       maxlength="500" id="nome" name="nome"
+                       required />
+        </div>
+        <div>
+            <class ="form-group">
+                <label for="descricao">Descricao</label>
+                <input class="form-control"
+                       id="descricao" name="descricao" min="0" maxlength="1000"
+                       required />
+        </div>
+        <div>
+            <class ="form-group">
+                <label for="atribuicao">Atribuição</label>
+                <input class="form-control"
+                       id="atribuicao" name="atribuicao" min="0" maxlength="1000"
+                       required />
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="salario">R$</label>
+                <input class="form-control"
+                       id="salario" name="salario"
+                       required />
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="requisito">Requisito</label>
+                <input class="form-control"
+                       id="requisito" name="requisito" min="0" maxlength="1000"
+                       required />
+        </div>
+
+        <div>
+            <class ="form-group">
+                <label for="date">Data</label>
+                <input class="form-control"
+                       id="date" name="date" min="0"
+                       required />
+        </div>
+
+
+        <br />
+
+        <div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+            <a href="/Vaga/index" class="btn btn-primary">Voltar</a>
+
+        </div>
+
+
+
+    </form>
+</div>
+
+
+
+
+
+
+

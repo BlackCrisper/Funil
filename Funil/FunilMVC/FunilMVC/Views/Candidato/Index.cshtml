@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FunilMVC.Models.CANDIDATO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div>
+    Total de Candidatos: @ViewBag.qtdCandidato
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Formação</th>
+            
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+
+
+            <tr>
+
+                <th>@item.CANID</th>
+                <td>@item.CANNOME</td>
+                <td>@item.CANFORMACAO</td>
+              
+
+
+
+
+               
+            </tr>
+
+
+
+
+
+        }
+
+    </tbody>
+
+
+
+
+</table>
+
+
+
+<div>
+
+    <a href="/Vaga/Index" class="btn btn-danger">Voltar</a>
+</div>

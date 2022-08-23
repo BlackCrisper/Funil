@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FunilMVC.Models.VAGA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>
+    Lista de Vagas
+    <a class="btn btn-success" href="/Vaga/Criar">Novo</a>
+    <a class="btn btn-primary" href="/candidato/Index">Candidatos</a>
+
+</h2>
+<div>
+    Total de vagas: @ViewBag.qtdVaga
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Atribuição</th>
+            <th>R$</th>
+            <th>Requisitos</th>
+            <th>Data</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+               
+
+                    <tr>
+
+                        <th>@item.VAIID</th>
+                        <td>@item.VAINOME</td>
+                        <td>@item.VAIDESCRICAO</td>
+                        <td>@item.VAIATRIBUICAO</td>
+                        <td>@item.VAISALARIO</td>
+                        <td>@item.VAIREQUISITO</td>
+                        <td>@item.VAIDATACADASTRO</td>
+
+
+
+
+                        <td>
+
+                            <a href="/Vaga/editar?id=@item.VAIID"><button type="button" class="btn btn-warning">Editar</button></a>
+                            <a href="/Vaga/exibir?id=@item.VAIID"><button type="button" class="btn btn-primary">Exibir</button></a>
+                            <a href="/Vaga/deletar?id=@item.VAIID"><button type="button" class="btn btn-danger">Deletar</button></a>
+                        </td>
+                    </tr>
+
+              
+
+
+           
+        }
+
+    </tbody>
+
+
+
+
+</table>
+
+
+
+<div>
+
+    <a href="/home/Index" class="btn btn-danger">Voltar</a>
+</div>

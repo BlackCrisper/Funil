@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDFunilModelStoreContainer" CdmEntityContainer="BDFunilEntities">
+    <EntitySetMapping Name="CANDIDATO">
+      <EntityTypeMapping TypeName="BDFunilModel.CANDIDATO">
+        <MappingFragment StoreEntitySet="CANDIDATO">
+          <ScalarProperty Name="CANID" ColumnName="CANID" />
+          <ScalarProperty Name="CANNOME" ColumnName="CANNOME" />
+          <ScalarProperty Name="CANFORMACAO" ColumnName="CANFORMACAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CANDIDATOVAGA">
+      <EntityTypeMapping TypeName="BDFunilModel.CANDIDATOVAGA">
+        <MappingFragment StoreEntitySet="CANDIDATOVAGA">
+          <ScalarProperty Name="CANID" ColumnName="CANID" />
+          <ScalarProperty Name="VAIID" ColumnName="VAIID" />
+          <ScalarProperty Name="CAVDATACADASTRO" ColumnName="CAVDATACADASTRO" />
+          <ScalarProperty Name="CAVSTATUSCANDIDATURA" ColumnName="CAVSTATUSCANDIDATURA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ETAPA">
+      <EntityTypeMapping TypeName="BDFunilModel.ETAPA">
+        <MappingFragment StoreEntitySet="ETAPA">
+          <ScalarProperty Name="ETAID" ColumnName="ETAID" />
+          <ScalarProperty Name="ETADESCRICACAO" ColumnName="ETADESCRICACAO" />
+          <ScalarProperty Name="ETASEQ" ColumnName="ETASEQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VAGA">
+      <EntityTypeMapping TypeName="BDFunilModel.VAGA">
+        <MappingFragment StoreEntitySet="VAGA">
+          <ScalarProperty Name="VAIID" ColumnName="VAIID" />
+          <ScalarProperty Name="VAINOME" ColumnName="VAINOME" />
+          <ScalarProperty Name="VAIDESCRICAO" ColumnName="VAIDESCRICAO" />
+          <ScalarProperty Name="VAIATRIBUICAO" ColumnName="VAIATRIBUICAO" />
+          <ScalarProperty Name="VAISALARIO" ColumnName="VAISALARIO" />
+          <ScalarProperty Name="VAIREQUISITO" ColumnName="VAIREQUISITO" />
+          <ScalarProperty Name="VAIDATACADASTRO" ColumnName="VAIDATACADASTRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

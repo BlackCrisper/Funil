@@ -1,0 +1,60 @@
+﻿@model FunilMVC.Models.VAGA
+
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2>Deletar</h2>
+
+<div>
+
+
+
+    <form action="/Vaga/ConfirmeDelete?id=@Model.VAIID" method="post">
+
+        
+            <div>
+                <class ="form-group">
+                    <label>Nome:</label>
+                    <td>@Model.VAINOME</td>
+            </div>
+
+            <div>
+                <class ="form-group">
+                    <label>Descrição:</label>
+                    <td>@Model.VAIDESCRICAO</td>
+            </div>
+
+            <div>
+                <class ="form-group">
+                    <label>Atribuição:</label>
+                    <td>@Model.VAIATRIBUICAO</td>
+            </div>
+
+            <div>
+                <class ="form-group">
+                    <label>R$:</label>
+                    <td>@Model.VAISALARIO</td>
+            </div>
+
+            <div>
+                <class ="form-group">
+                    <label>Requisito:</label>
+                    <td>@Model.VAIREQUISITO</td>
+            </div>
+
+            <div>
+                <class ="form-group">
+                    <label>Data:</label>
+                    <td>@Model.VAIDATACADASTRO</td>
+            </div>
+
+       
+
+        <br />
+
+        <a href="/Vaga/index" class="btn btn-info">Voltar</a>
+        <button class="btn btn-danger" type="submit">Deletar</button>
+
+    </form>
+</div>

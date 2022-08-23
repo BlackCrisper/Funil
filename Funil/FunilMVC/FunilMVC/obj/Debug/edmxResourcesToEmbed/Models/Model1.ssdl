@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDFunilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CANDIDATO">
+    <Key>
+      <PropertyRef Name="CANID" />
+    </Key>
+    <Property Name="CANID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CANNOME" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CANFORMACAO" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="CANDIDATOVAGA">
+    <Key>
+      <PropertyRef Name="CANID" />
+      <PropertyRef Name="VAIID" />
+    </Key>
+    <Property Name="CANID" Type="int" Nullable="false" />
+    <Property Name="VAIID" Type="int" Nullable="false" />
+    <Property Name="CAVDATACADASTRO" Type="datetime" Nullable="false" />
+    <Property Name="CAVSTATUSCANDIDATURA" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ETAPA">
+    <Key>
+      <PropertyRef Name="ETAID" />
+    </Key>
+    <Property Name="ETAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ETADESCRICACAO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ETASEQ" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VAGA">
+    <Key>
+      <PropertyRef Name="VAIID" />
+    </Key>
+    <Property Name="VAIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VAINOME" Type="varchar" MaxLength="500" />
+    <Property Name="VAIDESCRICAO" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="VAIATRIBUICAO" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="VAISALARIO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="VAIREQUISITO" Type="varchar" MaxLength="1000" />
+    <Property Name="VAIDATACADASTRO" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CANDIDATO__CANID__2E1BDC42">
+    <End Role="CANDIDATO" Type="Self.CANDIDATO" Multiplicity="1" />
+    <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANDIDATO">
+        <PropertyRef Name="CANID" />
+      </Principal>
+      <Dependent Role="CANDIDATOVAGA">
+        <PropertyRef Name="CANID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CANDIDATO__VAIID__2F10007B">
+    <End Role="VAGA" Type="Self.VAGA" Multiplicity="1" />
+    <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VAGA">
+        <PropertyRef Name="VAIID" />
+      </Principal>
+      <Dependent Role="CANDIDATOVAGA">
+        <PropertyRef Name="VAIID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDFunilModelStoreContainer">
+    <EntitySet Name="CANDIDATO" EntityType="Self.CANDIDATO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CANDIDATOVAGA" EntityType="Self.CANDIDATOVAGA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ETAPA" EntityType="Self.ETAPA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VAGA" EntityType="Self.VAGA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CANDIDATO__CANID__2E1BDC42" Association="Self.FK__CANDIDATO__CANID__2E1BDC42">
+      <End Role="CANDIDATO" EntitySet="CANDIDATO" />
+      <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CANDIDATO__VAIID__2F10007B" Association="Self.FK__CANDIDATO__VAIID__2F10007B">
+      <End Role="VAGA" EntitySet="VAGA" />
+      <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
