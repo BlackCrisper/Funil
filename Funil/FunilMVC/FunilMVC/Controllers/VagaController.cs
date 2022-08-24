@@ -10,7 +10,7 @@ namespace FunilMVC.Controllers
 {
     public class VagaController : Controller
     {
-        BDFunilEntities bd = new BDFunilEntities();
+        BDFunilEntities1 bd = new BDFunilEntities1();
         // GET: Cursos
         public ActionResult Index()
         {
@@ -118,6 +118,20 @@ namespace FunilMVC.Controllers
             return View(VagaExibir);
         }
 
-       
+
+        [HttpGet]
+        public ActionResult CandidatoPorVaga(int? id)
+        {
+           
+            return View(bd.GrupoCandidatoVaga.ToList().Where(x => x.CodigoV == id));
+
+           
+        }
+
+       public ActionResult teste()
+        {
+            return View();
+        }
+
     }
 }

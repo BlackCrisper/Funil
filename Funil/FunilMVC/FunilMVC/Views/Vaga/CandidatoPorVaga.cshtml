@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FunilMVC.Models.GrupoCandidatoVaga>
+
+@{
+    ViewBag.Title = "Candidatos";
+    var candi = Model.ToList().First();
+}
+
+<h2>Candidatos cadastrados na vaga: </h2>
+<h3>@candi.Vaga</h3>
+<br />
+
+<div class="row">
+    <table class="table">
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+
+            <th scope="col">
+                Nome
+            </th>
+
+            <th scope="col">
+                Vaga
+            </th>
+
+            <th scope="col">
+                Data de cadastro
+            </th>
+
+            <th scope="col">
+                Situação
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vaga)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataDeCadastro)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Situacao)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <a class="btn btn-primary" href="/Home/Index">Voltar</a>
+
+</div>

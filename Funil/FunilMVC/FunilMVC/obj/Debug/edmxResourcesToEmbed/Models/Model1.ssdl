@@ -38,6 +38,33 @@
     <Property Name="VAIREQUISITO" Type="varchar" MaxLength="1000" />
     <Property Name="VAIDATACADASTRO" Type="datetime" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BDFunil.dbo.DashBoard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DashBoard">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="VAINOME" Type="varchar" MaxLength="500" />
+    <Property Name="Quantidade" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'BDFunil.dbo.GrupoCandidatoVaga' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GrupoCandidatoVaga">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="Nome" />
+      <PropertyRef Name="CodigoV" />
+      <PropertyRef Name="DataDeCadastro" />
+      <PropertyRef Name="Situacao" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CodigoV" Type="int" Nullable="false" />
+    <Property Name="Vaga" Type="varchar" MaxLength="500" />
+    <Property Name="DataDeCadastro" Type="datetime" Nullable="false" />
+    <Property Name="Situacao" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
   <Association Name="FK__CANDIDATO__CANID__2E1BDC42">
     <End Role="CANDIDATO" Type="Self.CANDIDATO" Multiplicity="1" />
     <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
@@ -67,6 +94,23 @@
     <EntitySet Name="CANDIDATOVAGA" EntityType="Self.CANDIDATOVAGA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ETAPA" EntityType="Self.ETAPA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VAGA" EntityType="Self.VAGA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DashBoard" EntityType="Self.DashBoard" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DashBoard].[Codigo] AS [Codigo], 
+    [DashBoard].[VAINOME] AS [VAINOME], 
+    [DashBoard].[Quantidade] AS [Quantidade]
+    FROM [dbo].[DashBoard] AS [DashBoard]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GrupoCandidatoVaga" EntityType="Self.GrupoCandidatoVaga" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GrupoCandidatoVaga].[Codigo] AS [Codigo], 
+    [GrupoCandidatoVaga].[Nome] AS [Nome], 
+    [GrupoCandidatoVaga].[CodigoV] AS [CodigoV], 
+    [GrupoCandidatoVaga].[Vaga] AS [Vaga], 
+    [GrupoCandidatoVaga].[DataDeCadastro] AS [DataDeCadastro], 
+    [GrupoCandidatoVaga].[Situacao] AS [Situacao]
+    FROM [dbo].[GrupoCandidatoVaga] AS [GrupoCandidatoVaga]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__CANDIDATO__CANID__2E1BDC42" Association="Self.FK__CANDIDATO__CANID__2E1BDC42">
       <End Role="CANDIDATO" EntitySet="CANDIDATO" />
       <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BDFunilModelStoreContainer" CdmEntityContainer="BDFunilEntities">
+  <EntityContainerMapping StorageEntityContainer="BDFunilModelStoreContainer" CdmEntityContainer="BDFunilEntities1">
     <EntitySetMapping Name="CANDIDATO">
       <EntityTypeMapping TypeName="BDFunilModel.CANDIDATO">
         <MappingFragment StoreEntitySet="CANDIDATO">
@@ -39,6 +39,27 @@
           <ScalarProperty Name="VAISALARIO" ColumnName="VAISALARIO" />
           <ScalarProperty Name="VAIREQUISITO" ColumnName="VAIREQUISITO" />
           <ScalarProperty Name="VAIDATACADASTRO" ColumnName="VAIDATACADASTRO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GrupoCandidatoVaga">
+      <EntityTypeMapping TypeName="BDFunilModel.GrupoCandidatoVaga">
+        <MappingFragment StoreEntitySet="GrupoCandidatoVaga">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="CodigoV" ColumnName="CodigoV" />
+          <ScalarProperty Name="Vaga" ColumnName="Vaga" />
+          <ScalarProperty Name="DataDeCadastro" ColumnName="DataDeCadastro" />
+          <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DashBoard">
+      <EntityTypeMapping TypeName="BDFunilModel.DashBoard">
+        <MappingFragment StoreEntitySet="DashBoard">
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="VAINOME" ColumnName="VAINOME" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

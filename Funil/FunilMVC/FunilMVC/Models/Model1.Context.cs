@@ -13,10 +13,10 @@ namespace FunilMVC.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BDFunilEntities : DbContext
+    public partial class BDFunilEntities1 : DbContext
     {
-        public BDFunilEntities()
-            : base("name=BDFunilEntities")
+        public BDFunilEntities1()
+            : base("name=BDFunilEntities1")
         {
         }
     
@@ -29,5 +29,7 @@ namespace FunilMVC.Models
         public virtual DbSet<CANDIDATOVAGA> CANDIDATOVAGA { get; set; }
         public virtual DbSet<ETAPA> ETAPA { get; set; }
         public virtual DbSet<VAGA> VAGA { get; set; }
+        public virtual DbSet<GrupoCandidatoVaga> GrupoCandidatoVaga { get; set; }
+        public virtual DbSet<DashBoard> DashBoard { get; set; }
     }
 }

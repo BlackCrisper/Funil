@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CandidatoController.cs" />
     <Compile Include="Controllers\CandidatoVagaController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\EtapaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VagaController.cs" />
@@ -142,7 +143,13 @@
     <Compile Include="Models\CANDIDATOVAGA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashBoard.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ETAPA.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GrupoCandidatoVaga.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -176,8 +183,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -227,6 +234,10 @@
     <Content Include="Views\Vaga\Exibir.cshtml" />
     <Content Include="Views\Vaga\Deletar.cshtml" />
     <Content Include="Views\Home\Erro.cshtml" />
+    <Content Include="Views\CandidatoPorVaga\Index.cshtml" />
+    <Content Include="Views\Vaga\CandidatoPorVaga.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Vaga\teste.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

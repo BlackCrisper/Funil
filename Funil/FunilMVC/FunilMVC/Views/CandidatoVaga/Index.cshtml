@@ -1,7 +1,76 @@
-﻿
+﻿@model IEnumerable<FunilMVC.Models.CANDIDATOVAGA>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Candidato</th>
+            <th>Vaga</th>
+            <th>Status</th>
+       
+
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+
+
+            <tr>
+
+                <th>@item.CANDIDATO.CANNOME</th>
+                <th>@item.VAGA.VAINOME</th>
+                <th></th>
+
+                @switch (item.CAVSTATUSCANDIDATURA)
+                {
+                    case "Ativo":
+                        <th>está concorrendo</th>
+                        break;
+
+                    case "Finalizado":
+                        <th>o processo finalizou</th>
+                        break;
+                    case "Cancelado":
+                        <th>
+                            não quer mais participar
+                            daquela vaga
+                        </th>
+                        break;
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </tr>
+
+
+
+
+
+        }
+
+    </tbody>
+
+
+
+
+</table>
 

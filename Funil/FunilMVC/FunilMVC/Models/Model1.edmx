@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDFunilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDFunilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CANDIDATO">
           <Key>
             <PropertyRef Name="CANID" />
@@ -43,6 +43,33 @@
           <Property Name="VAIREQUISITO" Type="varchar" MaxLength="1000" />
           <Property Name="VAIDATACADASTRO" Type="datetime" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BDFunil.dbo.DashBoard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DashBoard">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="VAINOME" Type="varchar" MaxLength="500" />
+          <Property Name="Quantidade" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BDFunil.dbo.GrupoCandidatoVaga' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GrupoCandidatoVaga">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Nome" />
+            <PropertyRef Name="CodigoV" />
+            <PropertyRef Name="DataDeCadastro" />
+            <PropertyRef Name="Situacao" />
+          </Key>
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodigoV" Type="int" Nullable="false" />
+          <Property Name="Vaga" Type="varchar" MaxLength="500" />
+          <Property Name="DataDeCadastro" Type="datetime" Nullable="false" />
+          <Property Name="Situacao" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <Association Name="FK__CANDIDATO__CANID__2E1BDC42">
           <End Role="CANDIDATO" Type="Self.CANDIDATO" Multiplicity="1" />
           <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
@@ -72,6 +99,23 @@
           <EntitySet Name="CANDIDATOVAGA" EntityType="Self.CANDIDATOVAGA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ETAPA" EntityType="Self.ETAPA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VAGA" EntityType="Self.VAGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DashBoard" EntityType="Self.DashBoard" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DashBoard].[Codigo] AS [Codigo], 
+    [DashBoard].[VAINOME] AS [VAINOME], 
+    [DashBoard].[Quantidade] AS [Quantidade]
+    FROM [dbo].[DashBoard] AS [DashBoard]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GrupoCandidatoVaga" EntityType="Self.GrupoCandidatoVaga" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GrupoCandidatoVaga].[Codigo] AS [Codigo], 
+    [GrupoCandidatoVaga].[Nome] AS [Nome], 
+    [GrupoCandidatoVaga].[CodigoV] AS [CodigoV], 
+    [GrupoCandidatoVaga].[Vaga] AS [Vaga], 
+    [GrupoCandidatoVaga].[DataDeCadastro] AS [DataDeCadastro], 
+    [GrupoCandidatoVaga].[Situacao] AS [Situacao]
+    FROM [dbo].[GrupoCandidatoVaga] AS [GrupoCandidatoVaga]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__CANDIDATO__CANID__2E1BDC42" Association="Self.FK__CANDIDATO__CANID__2E1BDC42">
             <End Role="CANDIDATO" EntitySet="CANDIDATO" />
             <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
@@ -81,8 +125,7 @@
             <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDFunilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -128,6 +171,21 @@
           <Property Name="VAIDATACADASTRO" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CANDIDATOVAGA" Relationship="Self.FK__CANDIDATO__VAIID__2F10007B" FromRole="VAGA" ToRole="CANDIDATOVAGA" />
         </EntityType>
+        <EntityType Name="GrupoCandidatoVaga">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Nome" />
+            <PropertyRef Name="CodigoV" />
+            <PropertyRef Name="DataDeCadastro" />
+            <PropertyRef Name="Situacao" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodigoV" Type="Int32" Nullable="false" />
+          <Property Name="Vaga" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DataDeCadastro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Situacao" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <Association Name="FK__CANDIDATO__CANID__2E1BDC42">
           <End Role="CANDIDATO" Type="Self.CANDIDATO" Multiplicity="1" />
           <End Role="CANDIDATOVAGA" Type="Self.CANDIDATOVAGA" Multiplicity="*" />
@@ -152,11 +210,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BDFunilEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BDFunilEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CANDIDATO" EntityType="Self.CANDIDATO" />
           <EntitySet Name="CANDIDATOVAGA" EntityType="Self.CANDIDATOVAGA" />
           <EntitySet Name="ETAPA" EntityType="Self.ETAPA" />
           <EntitySet Name="VAGA" EntityType="Self.VAGA" />
+          <EntitySet Name="GrupoCandidatoVaga" EntityType="Self.GrupoCandidatoVaga" />
           <AssociationSet Name="FK__CANDIDATO__CANID__2E1BDC42" Association="Self.FK__CANDIDATO__CANID__2E1BDC42">
             <End Role="CANDIDATO" EntitySet="CANDIDATO" />
             <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
@@ -165,13 +224,22 @@
             <End Role="VAGA" EntitySet="VAGA" />
             <End Role="CANDIDATOVAGA" EntitySet="CANDIDATOVAGA" />
           </AssociationSet>
+          <EntitySet Name="DashBoard" EntityType="BDFunilModel.DashBoard" />
         </EntityContainer>
+        <EntityType Name="DashBoard">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="VAINOME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Quantidade" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BDFunilModelStoreContainer" CdmEntityContainer="BDFunilEntities">
+        <EntityContainerMapping StorageEntityContainer="BDFunilModelStoreContainer" CdmEntityContainer="BDFunilEntities1">
           <EntitySetMapping Name="CANDIDATO">
             <EntityTypeMapping TypeName="BDFunilModel.CANDIDATO">
               <MappingFragment StoreEntitySet="CANDIDATO">
@@ -210,6 +278,27 @@
                 <ScalarProperty Name="VAISALARIO" ColumnName="VAISALARIO" />
                 <ScalarProperty Name="VAIREQUISITO" ColumnName="VAIREQUISITO" />
                 <ScalarProperty Name="VAIDATACADASTRO" ColumnName="VAIDATACADASTRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GrupoCandidatoVaga">
+            <EntityTypeMapping TypeName="BDFunilModel.GrupoCandidatoVaga">
+              <MappingFragment StoreEntitySet="GrupoCandidatoVaga">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="CodigoV" ColumnName="CodigoV" />
+                <ScalarProperty Name="Vaga" ColumnName="Vaga" />
+                <ScalarProperty Name="DataDeCadastro" ColumnName="DataDeCadastro" />
+                <ScalarProperty Name="Situacao" ColumnName="Situacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DashBoard">
+            <EntityTypeMapping TypeName="BDFunilModel.DashBoard">
+              <MappingFragment StoreEntitySet="DashBoard">
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="VAINOME" ColumnName="VAINOME" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

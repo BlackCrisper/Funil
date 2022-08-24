@@ -4,13 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f27d72d3348f4992baf23d25735413b9" Name="Diagram1">
+      <Diagram DiagramId="f8ed1647f0324535ab35689d05d5a151" Name="Diagram1">
         <EntityTypeShape EntityType="BDFunilModel.CANDIDATO" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BDFunilModel.CANDIDATOVAGA" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BDFunilModel.ETAPA" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDFunilModel.VAGA" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDFunilModel.GrupoCandidatoVaga" Width="3.125" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="BDFunilModel.FK__CANDIDATO__CANID__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="BDFunilModel.FK__CANDIDATO__VAIID__2F10007B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDFunilModel.DashBoard" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

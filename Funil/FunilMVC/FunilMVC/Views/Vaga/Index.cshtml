@@ -5,17 +5,23 @@
 }
 
 
-
 <h2>
     Lista de Vagas
     <a class="btn btn-success" href="/Vaga/Criar">Novo</a>
-    <a class="btn btn-primary" href="/candidato/Index">Candidatos</a>
+
 
 </h2>
-<div>
-    Total de vagas: @ViewBag.qtdVaga
 
+
+
+
+<div class="total">
+    Total de vagas: @ViewBag.qtdVaga
 </div>
+
+
+
+<br />
 
 <table class="table">
     <thead>
@@ -34,34 +40,35 @@
     <tbody>
         @foreach (var item in Model)
         {
-            
-               
-
-                    <tr>
-
-                        <th>@item.VAIID</th>
-                        <td>@item.VAINOME</td>
-                        <td>@item.VAIDESCRICAO</td>
-                        <td>@item.VAIATRIBUICAO</td>
-                        <td>@item.VAISALARIO</td>
-                        <td>@item.VAIREQUISITO</td>
-                        <td>@item.VAIDATACADASTRO</td>
 
 
 
+            <tr>
 
-                        <td>
-
-                            <a href="/Vaga/editar?id=@item.VAIID"><button type="button" class="btn btn-warning">Editar</button></a>
-                            <a href="/Vaga/exibir?id=@item.VAIID"><button type="button" class="btn btn-primary">Exibir</button></a>
-                            <a href="/Vaga/deletar?id=@item.VAIID"><button type="button" class="btn btn-danger">Deletar</button></a>
-                        </td>
-                    </tr>
-
-              
+                <th>@item.VAIID</th>
+                <td>@item.VAINOME</td>
+                <td>@item.VAIDESCRICAO</td>
+                <td>@item.VAIATRIBUICAO</td>
+                <td>@item.VAISALARIO</td>
+                <td>@item.VAIREQUISITO</td>
+                <td>@item.VAIDATACADASTRO</td>
 
 
-           
+
+
+                <td>
+
+                    <a href="/Vaga/editar?id=@item.VAIID"><button type="button" class="btn btn-warning">Editar</button></a>
+                    <a href="/Vaga/exibir?id=@item.VAIID"><button type="button" class="btn btn-primary">Exibir</button></a>
+                    <a href="/Vaga/deletar?id=@item.VAIID"><button type="button" class="btn btn-danger">Deletar</button></a>
+                    <a href="/Vaga/CandidatoPorVaga?id=@item.VAIID"><button type="button" class="btn btn-info">Candidato</button></a>
+                </td>
+            </tr>
+
+
+
+
+
         }
 
     </tbody>
@@ -73,7 +80,22 @@
 
 
 
+
+
 <div>
 
     <a href="/home/Index" class="btn btn-danger">Voltar</a>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+

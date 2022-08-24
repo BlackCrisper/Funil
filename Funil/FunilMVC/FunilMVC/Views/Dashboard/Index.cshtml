@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FunilMVC.Models.DashBoard>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <div class="row">
+        <h2>Dados das Vagas</h2>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <a href="/Vaga/CandidatoPorVaga?id=@item.Codigo">
+                <div class="col-md-2 divCursoItemDashboard">
+                    <div>
+                        <h2>@item.Quantidade</h2>
+                    </div>
+                    <div>
+                        @item.VAINOME:
+                    </div>
+
+
+
+                </div>
+            </a>
+
+        }
+
+    </div>
+    <br />
+    <a href="/home/Index" class="btn btn-danger">Voltar</a>
+</div>
+
+
+
+
+
+
+
+
+
+

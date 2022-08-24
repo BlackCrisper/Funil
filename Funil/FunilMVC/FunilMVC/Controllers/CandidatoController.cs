@@ -10,7 +10,7 @@ namespace FunilMVC.Controllers
 {
     public class CandidatoController : Controller
     {
-        BDFunilEntities bd = new BDFunilEntities();
+        BDFunilEntities1 bd = new BDFunilEntities1();
         // GET: Cursos
         public ActionResult Index()
         {

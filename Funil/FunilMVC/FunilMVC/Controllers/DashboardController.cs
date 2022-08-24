@@ -7,16 +7,15 @@ using System.Web.Mvc;
 
 namespace FunilMVC.Controllers
 {
-    public class CandidatoVagaController : Controller
+    public class DashboardController : Controller
     {
+
         BDFunilEntities1 bd = new BDFunilEntities1();
-        // GET: CandidatoVaga
+
+        // GET: Dashboard
         public ActionResult Index()
         {
-
-            return View(bd.CANDIDATOVAGA.ToList());
+            return View(bd.DashBoard.ToList());
         }
-      
-
     }
 }
